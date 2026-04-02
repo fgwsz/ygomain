@@ -178,7 +178,7 @@ def check_and_download(
     url: str,
     local_path: str,
     max_retries: int = 999,
-    retry_delay: float = 3
+    retry_delay: float = 3.0
 ) -> bool:
     """先检查远程与本地文件大小，若本地不存在或大小不一致则下载。"""
     try:
@@ -201,12 +201,3 @@ def check_and_download(
         retry_delay=retry_delay,
         remote_size=remote_size
     )
-
-if __name__ == "__main__":
-    url = "https://cdn02.moecube.com:444/koishipro/archive/KoishiPro-master-linux-zh-CN.tar.gz"
-    local = "koishipro.tar.gz"
-    success = check_and_download(url, local, max_retries=999, retry_delay=3)
-    if success:
-        print(f"操作成功，文件保存为: {local}")
-    else:
-        print("操作失败")
